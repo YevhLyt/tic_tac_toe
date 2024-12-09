@@ -8,3 +8,32 @@ RED = (255, 0, 0)
 HelloWorldColors = [BLACK, RED]
 font = pygame.font.Font(None, 36)
 count = 0
+#main game cycle
+while True:
+    if game_over:
+        pygame.display.flip()
+        pygame.time.delay(1000)
+        draw_game_over_screen()
+        #run event handler to check the exit
+        check_for_quit_event()
+    else:
+        game_window.fill(WHITE)
+        run_event_processing()
+        #check win or no one win
+        game_over = check_for_win_or_draw()
+        draw_the_board() #draw the playground
+        pygame.display.flip()#update the screen
+        #check if anybody win after X was placed
+        if game_over:
+            continue
+        #AI is placing 0
+        if X_placed:
+            #pretend AI thinking
+            pygame.time.delay(500)
+            O_placed = run_algorithm_to_place_O()
+            game_over = check_if_anyone_won()
+            draw_the_board() ##redraw the board after placing O
+            X_placed = False
+    pygame.display.flip()
+    #60 fps
+    clock.tick(60)
