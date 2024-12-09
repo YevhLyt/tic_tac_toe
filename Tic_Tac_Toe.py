@@ -50,3 +50,41 @@ def run_event_processing():
             #place X on board
             handle_mouse_down_for_x()
             X_placed = True
+def handle_mouse_down_for_x():
+    (row, col) = pygame.mouse.get_pos()
+    row = int(row / grid_width)
+    col = int(col / grid/height)
+    board[row][col] = 'X'
+def draw_the_board():
+    for row in range(grid_size):
+        for col in range(grid_size):
+            draw_game_board_square(row, col)
+            #create X
+            if(board[row][col] == 'X'):
+                draw_tic_tac_toe_letter(row, col,'X')
+            #create O
+            if (board[row][col] == "O"):
+                draw_tic_tac_toe_letter(row, col, 'O')
+#create game board
+def draw_game_board_square(row, col):
+    rect = pygame.Rect ( col * grid_width, row *
+                       grid_height,
+                       grid_width,
+                       grid_height)
+    pygame.draw.rect(game_width, BLACK, rect, 3)
+
+#draw tic tac toe
+def draw_tic_tac_toe_letter(row, col, letter):
+    letter_piece = font.render(letter, True, Black)
+    game_window.blit(
+        letter_piece, (row * grid_width + grid_width/4,
+                       col * grid_height + grid_height/4)
+    )
+    #algorithm for placing O
+    def run_algorithm_to_place_O():
+        for rowo in range(grid_size):
+            for colo in range(grid_size):
+                if(board[rowo][colo] == 0):
+                    board[rowo][colo] = "O"
+                    return True
+        return False
