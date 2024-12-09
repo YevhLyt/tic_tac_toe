@@ -88,3 +88,16 @@ def draw_tic_tac_toe_letter(row, col, letter):
                     board[rowo][colo] = "O"
                     return True
         return False
+
+#check win
+
+def check_if_anyone_won():
+    global winner
+    #check if anybody won in horizontal line
+    for row in range(3):
+        if board[row][0] == board[row][1] == board[row][2] != 0:
+            winner = board[row][0]
+            return True
+    
+    #check if anybody won in vertical
+    
