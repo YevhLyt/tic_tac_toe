@@ -37,3 +37,16 @@ while True:
     pygame.display.flip()
     #60 fps
     clock.tick(60)
+
+def run_event_processing():
+    global X_placed
+    global game_over
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            #place X on board
+            handle_mouse_down_for_x()
+            X_placed = True
