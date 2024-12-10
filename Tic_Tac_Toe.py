@@ -100,4 +100,16 @@ def check_if_anyone_won():
             return True
     
     #check if anybody won in vertical
-    
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] != 0:
+            winner = board[0][col]
+            return True
+    #check winners in diagonal
+    if board[0][0] == board[1][1] == board[2][2] != 0:
+        winner = board[0][0]
+        return True
+    if board[0][2] == board[1][1] == board[2][0] ! = 0:
+        winner = board[0][2]
+        return True
+    #nobody won
+    return False
